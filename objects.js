@@ -50,4 +50,5 @@ function setToBlue(object){
 	object.color = 'blue'
 }
 
-setToBlue(originalObject0)
+//Vai mudar a cor do originalObject para blue
+setToBlue(originalObject)
