@@ -5,11 +5,13 @@ const bicycle = {
 		diameter: 18,
 		width: 8
 	},
+
 	owenrs: ['vinny','bass']
 };
 
-//criando um objeto vazio, melhor usar a notação literal dq a função
+//criando um objeto vazio, melhor usar a notação literal dq a função, um objeto é apenas um conjunto de pares de chave/valor
 const myObject = {};
+//Object() é a função construtora cuja palavra chave é new
 const newObject = new Object();
 
 const cat = {
@@ -52,3 +54,59 @@ function setToBlue(object){
 
 //Vai mudar a cor do originalObject para blue
 setToBlue(originalObject)
+
+const developer = {
+	name: 'Vinicius',
+}
+
+developer.sayHello = function(){
+	console.log('Hello World')
+}
+
+developer.sayHello()
+
+//this. permite acessar as proproedades e metodos apenas do objeto, referencia apenas o objeto
+const dog = {
+	name: 'Bass',
+	age: 7,
+	whatIsThis: function(){
+		console.log(this)
+	},
+	woof: function(){
+		console.log(this.name + 'says "Au-Au"')
+	},
+	ageOneYear: function(){
+		this.age += 1
+		console.log("Current Age: ${this.age}")
+	}
+}
+
+function whoIs(){
+	this.tricksh = true
+}
+
+//Quando a função é chamada como metodo, this representa tudo que esta á esquerda do ponto
+dog.woof()
+
+//Quando é apenas uma funcção sem objeto, this representa o objeto window ( Objeto que contem inumeras informações e metodos sobre a pagina em questão)
+const sayWoof = dog.woof;
+
+//Retornar as chaves ou valores  de um objeto
+Object.keys(dog)
+Object.values(dog)
+
+const country = {
+	bigger: "Brasil",
+	smaller: "Argentina",
+	danger: {
+		zl: true
+	}
+}
+
+//loop com um objeto
+
+const result = []
+
+for(const name in country){
+	result.push(name)
+}
