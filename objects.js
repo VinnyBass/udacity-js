@@ -110,3 +110,4 @@ const result = []
 for(const name in country){
 	result.push(name)
 }
+

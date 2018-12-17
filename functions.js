@@ -1,0 +1,90 @@
+//Funções no js são de primeira classe, com isso podemos:
+//Armazena-las em variaveis, e chamalas pelo nome da variavel
+const myFunction = function howdy(n1, n2){
+	return n1 * n2;
+}
+
+myFunction(4,8)
+
+//Retornar uma função:
+function alertThenReturn() {
+  alert('Message 1!');
+
+  return function () {
+    alert('Message 2!');
+  };
+}
+//FUncção de ordem superior
+function higherOrderFunction(){
+	return function(){
+		return 8
+	}
+}
+
+const teste = alertThenReturn();
+const eigth = higherOrderFunction();
+//Vai imprimir nada e Message 2!
+higherOrderFunction()
+teste()
+//Para executar as duas basta usar, ou pegar o resultado da função retornada
+teste()()
+eigth()
+
+//Funções Callback, são funções passadas como parametro
+function callAndAdd(n, callbackFunction){
+	return n + callbackFunction();
+}
+
+function returnsThree(){
+	return 3;
+}
+
+//Vai retornar 5
+callAndAdd(2,returnsThree);
+
+//Foreach executa a função para cada elemento da matriz
+array = [1, 5, 2, 4, 6, 3]
+function logIfOdd(n){
+	if( n % 2 !== 0){
+		console.log(n)
+	}
+}
+
+array.forEach(logIfOdd)
+//Ou
+array.forEach(function (n){
+	if ( n % 2 !== 0){
+		console.log(n);
+	}
+});
+
+//O metodo .map() tem a mesma funcionalidade do foreach porem ele retorna uma matriz com o resultado de cada iteração
+const name = ['Vinicius','Eder','Tiago','Barcelos']
+const nameLengths = name.map(function(name){
+						return name.length;
+					});
+
+//nameLengths vai conter uma matriz com o tamanho de cada nome
+  const musicData = [
+    { artist: 'Adele', name: '25', sales: 1731000 },
+    { artist: 'Drake', name: 'Views', sales: 1608000 },
+    { artist: 'Beyonce', name: 'Lemonade', sales: 1554000 },
+    { artist: 'Chris Stapleton', name: 'Traveller', sales: 1085000 },
+    { artist: 'Pentatonix', name: 'A Pentatonix Christmas', sales: 904000 },
+    { artist: 'Original Broadway Cast Recording', 
+      name: 'Hamilton: An American Musical', sales: 820000 },
+    { artist: 'Twenty One Pilots', name: 'Blurryface', sales: 738000 },
+    { artist: 'Prince', name: 'The Very Best of Prince', sales: 668000 },
+    { artist: 'Rihanna', name: 'Anti', sales: 603000 },
+    { artist: 'Justin Bieber', name: 'Purpose', sales: 554000 }
+];
+
+const albumSalesStrings = musicData.map(function(album){
+	return album.name+" by "+album.artist+" sold " + album.sales+" copies" 
+})
+
+//O metodo filter tem a mesma funcionalidade de maps, porem ele retorna uma matriz apenas com os resultados que passaram no teste da função
+const shortNames = name.filter(function(name){
+	return name.length < 6;
+});
+
