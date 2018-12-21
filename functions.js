@@ -88,3 +88,54 @@ const shortNames = name.filter(function(name){
 	return name.length < 6;
 });
 
+//Uma função tem acesso a:
+//Argumentos passados como parametro, variaveis locais (ciradas dentro do escopo da função), variaveis dentro do escopo da sua função pai, e variaveis globais
+//O escopo global se refere ao objeto window quado rodamos em um navegador por exemplo
+//Para acessar variaveis o js usa a cadeia de escopos indo do interno para o externo
+//Closure/fechamento  = combinação entre uma função e o seu ambiente lexico(escopo da função(oque ela pode acessar)), todas tem fechamento
+function outerFunction() {
+  let num1 = 5;//Não pode ser acessada fora deste escopo
+
+  return function(num2) {
+  	//tem uma referencia do escopo da função pai(outerfunction)
+    console.log(num1 + num2);
+  };
+}
+
+let result = outerFunction();
+
+result(10); // retorna 15
+
+
+//Declaração de função, não exige que uma variavel seja atribuida a ela
+function returnHello() {
+  return 'Oi!';
+}
+
+//expressão de função, atribuidas a uma variavel
+const otherFunction = function() {
+  return 'Oi!';
+};
+
+//IIFE = Expressões de função invocadas imediatamente após serem criadas, são usadas para se criar escopos privados, o objetivo é invoca-la apenas uma vez
+(function sayHi(){
+    alert('Olá!');
+  }
+)(); //Colocando os parenteses na função ela vira uma expressão de função, e os () no final informam que ela deve ser chama imediatamente
+//Passando parametros para uma IIFE
+(function (name){
+    alert('Oi, ' + name);
+  }
+)('Andrew');
+
+//OUtro exemplo
+
+const myFunction = (
+  function () {
+    const hi = 'Oi!';
+    delete hi; //Só funciona em objetos, logo não surtira efeito aqui
+    return function () {
+      console.log(hi);
+    }
+  }
+)();
