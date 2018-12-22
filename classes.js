@@ -27,22 +27,3 @@ const tite = new Hero('Tite','coach');
 taylor.name;//Resulta em Taylor
 taylor.introduce();//Resulta na frse com o name and the role
 
-//Formas de invocar uma função
-function multiply(n1,n2){
-	return n1 * n2;
-}
-
-multiply.call(window,n1,n2);//O primeiro parametro deve ser o que queremos definir como this
-
-const mockingbird = {
-  title: 'O Sol é Para Todos',
-  describe: function () {
-    console.log(`${this.title} é um romance clássico`);
-  }
-};
-
-const pride = {
-  title: 'Orgulho e Preconceito'
-};
-
-mockingbird.describe.call(pride); // Ira retornar 'Orgulho e Preconceito é um romance clássico'
