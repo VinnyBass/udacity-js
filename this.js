@@ -49,3 +49,44 @@ invokeTwice(dog.growOneYear());//Não ira aumentar, pois como estamos passando a
 //Para previnirmos esse problema podemos usar o bind(), a diferença etre ele e os metodos call e apply, é que bind retorna uma nova função
 
 const myGrow = invokeTwice(dog.growOneYear.bind(dog));//Assim mesmo sendo chamado como uma função, bind cria uma nova função com o bind sendo o this que definimos no caso dog
+
+//Todo objeto está ligado a um prototipo, podemos criar metodos neles, pois se tivermos 101 objetos instanciados logo 101 metodos foram criados, com o prototipo, apenas um sera criado
+function Dalmatian (name) {
+  this.name = name;
+}
+
+Dalmatian.prototype.bark = function() {
+  console.log(`${this.name} barks!`);
+};
+
+
+const rodent = {
+	favoriteFood: 'cheese',
+	hasTail: false
+};
+
+function Mouse(){
+	this.favoriteFood = 'cheese';
+}
+
+Mouse.prototype = rodent;
+const ralph = new Mouse();
+const result = rodent.isProtorypeOf(ralph)//Igual a true
+const myPrototype = Object.getPrototypeOf(ralph);//{ teeth: 'incisors', hasTail: true }
+
+function LongBoard(){
+	this.material = "wood";
+}
+
+const board = new LongBoard();
+console.log(board.constructor);//Retorna a função construtora original 	
+
+//Com notação literal
+const rodent = {
+  teeth: 'incisors',
+  hasTail: true
+};
+
+console.log(rodent.constructor);
+// function Object() { [native code] }
+
