@@ -79,3 +79,45 @@ const mammal = {
 };
 
 const rabbit = Object.create(mammal);//cria um novo __proto__ com referencia ao original, uma subclasse
+
+
+//Todo objeto está ligado a um prototipo, podemos criar metodos neles, pois se tivermos 101 objetos instanciados logo 101 metodos foram criados, com o prototipo, apenas um sera criado
+function Dalmatian (name) {
+  this.name = name;
+}
+
+Dalmatian.prototype.bark = function() {
+  console.log(`${this.name} barks!`);
+};
+
+
+const rodent = {
+	favoriteFood: 'cheese',
+	hasTail: false
+};
+
+function Mouse(){
+	this.favoriteFood = 'cheese';
+}
+
+Mouse.prototype = rodent;
+const ralph = new Mouse();
+const result = rodent.isProtorypeOf(ralph)//Igual a true
+const myPrototype = Object.getPrototypeOf(ralph);//{ teeth: 'incisors', hasTail: true }
+
+function LongBoard(){
+	this.material = "wood";
+}
+
+const board = new LongBoard();
+console.log(board.constructor);//Retorna a função construtora original 	
+
+//Com notação literal
+const rodent = {
+  teeth: 'incisors',
+  hasTail: true
+};
+
+console.log(rodent.constructor);
+// function Object() { [native code] }
+
