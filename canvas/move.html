@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Desenhando</title>
+</head>
+<body>
+	<canvas id="c" width="500" height="500"></canvas>
+
+	<script type="text/javascript">
+		let c = document.querySelector("#c");
+		let ctx = c.getContext("2d");
+
+		//ctx.strokeStyle = "green";	
+		//ctx.strokeRect(50,50,100,100);
+
+		// ctx.beginPath();
+		// ctx.moveTo(75,75);
+		// ctx.lineTo(125,75);
+		// ctx.lineTo(125,125);
+		// ctx.lineTo(75,75);
+		// ctx.fillStyle = "blue";
+		// ctx.fill();
+		//ctx.stroke();
+
+		ctx.lineWidth = 3;	
+		ctx.font = '36pt Impact';
+		ctx.strokeStyle = 'black';
+		ctx.fillStyle = 'white';
+		ctx.textAlign = 'center';
+		//ctx.lineJoin = 'round';
+		ctx.strokeText("CANVAS MEMES!",200,100);
+		ctx.fillText("CANVAS MEMES!",200,100);
+
+
+	</script>
+</body>
+</html>

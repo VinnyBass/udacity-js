@@ -1,3 +1,9 @@
+//this tera o valor do novo objeto, no caso mySundae
+const mySundae = new Sundae('Chocolate', ['Sprinkles', 'Hot Fudge']);
+
+//This sera configurado conforme o parametro passado, no caso obj2
+const result = obj1.printName.call(obj2);
+
 //Formas de invocar uma função
 function multiply(n1,n2){
 	return n1 * n2;
@@ -25,7 +31,7 @@ const cat = {
 }
 
 function sayHello(message){
-	return console.log('${message}, ${this.name}');//o this aqui está referenciando o objeto global window
+	return console.log(`${message}, ${this.name}`);//o this aqui está referenciando o objeto global window
 }
 
 sayHello.call(cat, "Seja bem vindo");//agora o this ira referenciar o objeto cat
@@ -49,3 +55,27 @@ invokeTwice(dog.growOneYear());//Não ira aumentar, pois como estamos passando a
 //Para previnirmos esse problema podemos usar o bind(), a diferença etre ele e os metodos call e apply, é que bind retorna uma nova função
 
 const myGrow = invokeTwice(dog.growOneYear.bind(dog));//Assim mesmo sendo chamado como uma função, bind cria uma nova função com o bind sendo o this que definimos no caso dog
+
+const bear = {
+	claws: true,
+	diet: 'carnivore'
+}
+
+function PolarBear(){
+
+}
+
+PolarBear.prototype = bear;//PolarBear herdou as propriedades do object bear
+const snowball = new PolarBear; //snowball tem acesso a claws e diet
+snowball.color = 'white';
+snowball.favoriteDrink = 'cola';
+
+
+//Melhor forma para herdar de um objeto
+
+const mammal = {
+  vertebrate: true,
+  earBones: 3
+};
+
+const rabbit = Object.create(mammal);//cria um novo __proto__ com referencia ao original, uma subclasse

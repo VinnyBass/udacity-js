@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pixels</title>
+</head>
+<body>
+	<canvas id="c" width="500" height="500"></canvas>
+	<script type="text/javascript">
+		let c = document.querySelector('#c');
+		let ctx = c.getContext("2d");
+		const data = ctx.getImageData(0,0,400,400);
+
+		function paintGreen(imageData){
+			var numPixels = imageData.data.length /4;
+			for(const i = 0;i <= numPixels.length; i++){
+				if(i % 10 === 0){
+					imageData.data[i * 4 + 1] = 255;
+					imageData.data[i * 4 + 1] = 255;
+				}
+			}
+			ctx.putImageData(imageData,0,0);
+		}
+		paintGreen(data);
+	</script>
+</body>
+</html>

@@ -64,6 +64,11 @@ const nameLengths = name.map(function(name){
 						return name.length;
 					});
 
+///Podemos usar function arrow
+const upperizedNames = ['Farrin', 'Kagure', 'Asser'].map(
+  name => name.toUpperCase()
+);
+
 //nameLengths vai conter uma matriz com o tamanho de cada nome
   const musicData = [
     { artist: 'Adele', name: '25', sales: 1731000 },
@@ -139,3 +144,37 @@ const myFunction = (
     }
   }
 )();
+
+
+//Função com numero indefinido de argumentos
+function sum(...nums) {
+  let total = 0;  
+  for(const num of nums) {
+    total += num;
+  }
+  return total;
+}
+
+//Função arrow, só pode ser usada onde uma expressão de função é valida como:
+//Estar armazenada em uma variavel
+//Ser passada como argumento em uma função
+//e armazenada na propriedade de um objeto
+//as funções arrow herdam o valor de this do contexto onde estão inseridas. 
+const greeting = name => `Hello ${name}!`;
+greeting('Vinicius');
+
+// múltiplos parâmetros na lista, parênteses obrigatórios!
+const orderIceCream = (flavor, cone) => console.log(`Here's your ${flavor} ice cream in a ${cone} cone.`);
+orderIceCream('chocolate', 'waffle');
+
+//Parametros default
+function createGrid([width = 5, height = 5] = []) {
+  return `Generates a ${width} x ${height} grid`;
+}
+createGrid([2]); // Generates a 2 x 5 grid
+
+//Usando destructing de um objeto
+function createSundae({scoops = 1, toppings = ['Hot Fudge']} = {}) {
+  const scoopText = scoops === 1 ? 'scoop' : 'scoops';
+  return `Your sundae has ${scoops} ${scoopText} with ${toppings.join(' and ')} toppings.`;
+}

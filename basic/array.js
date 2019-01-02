@@ -92,3 +92,29 @@ for (var r = 0; r <= numbers.length; r++){
 }
 
 console.log(numbers);
+
+
+//Usando destructuring para extrair valores de uma array
+const point = [10, 25, -34];
+
+const [x, y, z] = point;
+
+console.log(x, y, z);
+
+//Combinando arrays
+const fruits = ["apples", "bananas", "pears"];
+const vegetables = ["corn", "potatoes", "carrots"];
+const produce = fruits.concat(vegetables);
+console.log(produce);
+
+//Operador Spread
+console.log(...fruits)//Separa e retorna todos os elementos do array
+
+//Podemos juntar os arrays da seguinte forma
+const junt = [...fruits,...vegetables];
+
+//Parametro rest, ao contrario do spread, junta elementos formando um array
+const order = [20.17, 18.67, 1.50, "cheese", "eggs", "milk", "bread"];
+const [total, subtotal, tax, ...items] = order;
+console.log(total, subtotal, tax, items);//Retorna 20.17 18.67 1.50 ['cheese','eggs','milk','bread']
+
